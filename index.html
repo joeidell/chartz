@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <style>
+    .chart-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px; /* Add margin for spacing */
+    }
+
+    #chart_div, #barchart_3d {
+      width: 900px;
+      height: 400px; /* Adjust height as needed */
+      margin-bottom: 20px; /* Add spacing between charts */
+    }
+  </style>
+</head>
+<body>
+  <div class="chart-container">
+    <div id="chart_div"></div>
+    <div id="barchart_3d"></div>
+  </div>
+  
+  <script>
+    google.charts.load('current', {'packages':['corechart']});
+
+    // Function for temperature line chart (unchanged)
+    function drawChart() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('date', 'Day');
+      data.addColumn('number', 'Temperature');
+
+      // Replace placeholders with your actual temperature data for February
+      data.addRows([
+      [new Date(2024, 2, 1), 38.9], 
+        [new Date(2024, 2, 2), 42.4],
+        [new Date(2024, 2, 3), 40.5],
+        [new Date(2024, 2, 4), 39.7], 
+        [new Date(2024, 2, 5), 38.8],
+        [new Date(2024, 2, 6), 35.8],
+        [new Date(2024, 2, 7), 38.9], 
+        [new Date(2024, 2, 8), 42.3],
+        [new Date(2024, 2, 9),46.5 ],
+        [new Date(2024, 2, 10), 47.0], 
+        [new Date(2024, 2, 11), 46.7],
+        [new Date(2024, 2, 12), 44.0],
+        [new Date(2024, 2, 13), 36.5], 
+        [new Date(2024, 2, 14),36.1 ],
+        [new Date(2024, 2, 15), 34.0],
+        [new Date(2024, 2, 16),39.7 ], 
+        [new Date(2024, 2, 17), 32.8],
+        [new Date(2024, 2, 18), 34.4],
+        [new Date(2024, 2, 19),36.5 ], 
+        [new Date(2024, 2, 20),33.9 ],
+        [new Date(2024, 2, 21),34.9 ],
+        [new Date(2024, 2, 22),38.8 ], 
+        [new Date(2024, 2, 23), 44.4],
+        [new Date(2024, 2, 24), 38.3],
+        [new Date(2024, 2, 25), 32.2], 
+        [new Date(2024, 2, 26),44.6 ],
+        [new Date(2024, 2, 27), 52.4],
+        [new Date(2024, 2, 28), 57.0],
+        [new Date(2024, 2, 29),37.4 ]
+      ]);
+
+      var options = {
+  'title':'Philadelphia Daily Temperatures - February 2024',
+  hAxis: {
+    slantedText: true
+  }
+};
+
+
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+
+    // Function for bar chart (unchanged)
+    function drawBarChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['Task', 'Hours per Day'],
+        ['Work',    8],
+        ['Food',      3],
+        ['Homework',  2],
+        ['Television', 2],
+        ['Sleep',    8],
+        ['Reading', 1]
+      ]);
+
+      var options = {
+        title: '24 Hours of Activities',
+        is3D: true,
+      };
+
+      var chart = new google.visualization.BarChart(document.getElementById('barchart_3d'));
+      chart.draw(data, options);
+    }
+
+    google.charts.setOnLoadCallback(drawCharts);
+
+    function drawCharts() {
+      drawChart();
+      drawBarChart();
+    }
+  </script>
+</body>
+</html>
